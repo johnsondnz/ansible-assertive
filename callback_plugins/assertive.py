@@ -166,13 +166,13 @@ class CallbackModule(CallbackModule_default):
             ), C.COLOR_CHANGED))
 
     def v2_runner_on_skipped(self, result):
-        if result._task.action == 'assert':
+        if result._task.action == 'assert' and self._display.verbosity > 1:
             self.process_assert_result(result, skipped=True)
         else:
             super(CallbackModule, self).v2_runner_on_skipped(result)
 
     def v2_runner_item_on_skipped(self, result):
-        if result._task.action == 'assert':
+        if result._task.action == 'assert' and self._display.verbosity > 1:
             self.process_assert_result(result, skipped=True)
         else:
             super(CallbackModule, self).v2_runner_item_on_skipped(result)
